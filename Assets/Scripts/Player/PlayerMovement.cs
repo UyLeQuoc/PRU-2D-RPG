@@ -5,25 +5,24 @@ public class PlayerMovement : MonoBehaviour
     [Header("Config")]
     [SerializeField] private float speed;
 
-    // Animator hashes
-    private readonly int moveX = Animator.StringToHash("MoveX");
-    private readonly int moveY = Animator.StringToHash("MoveY");
-    private readonly int moving = Animator.StringToHash("Moving");
+    public Vector2 MoveDirection => moveDirection;
 
+    private PlayerAnimations playerAnimations;
     private PlayerActions actions;
     private Rigidbody2D rb2D;
     private Vector2 moveDirection;
-    private Animator animator;
+    private Player player;
 
     private void Awake()
     {
         actions = new PlayerActions();
         rb2D = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        playerAnimations = GetComponent<PlayerAnimations>();
+        player = GetComponent<Player>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         ReadMovement();
     }
@@ -35,8 +34,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
+        if (player.PlayerStats.Health <= 0) return;
+
         rb2D.MovePosition(rb2D.position + moveDirection * (speed * Time.fixedDeltaTime));
     }
+
     private void ReadMovement()
     {
         moveDirection = actions.Movement.Move.ReadValue<Vector2>().normalized;
@@ -44,14 +46,13 @@ public class PlayerMovement : MonoBehaviour
         // If the player is not moving, return
         if (moveDirection == Vector2.zero)
         {
-            animator.SetBool(moving, false);
+            playerAnimations.SetMoveBoolTransition(false);
             return;
         }
 
         // Update the animator
-        animator.SetBool(moving, true);
-        animator.SetFloat(moveX, moveDirection.x);
-        animator.SetFloat(moveY, moveDirection.y);
+        playerAnimations.SetMoveBoolTransition(true);
+        playerAnimations.SetMoveAnimation(moveDirection);
     }
 
     private void OnEnable()

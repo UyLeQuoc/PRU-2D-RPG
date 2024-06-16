@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4b287966d383143af8260bb87e289d, type: 3}
+  m_Name: ItemWeapon_Bone
+  m_EditorClassIdentifier: 
+  ID: WeaponBone
+  Name: Bone
+  Icon: {fileID: 21300000, guid: a6a3a8d76f318f347820e544612b067c, type: 3}
+  Description: 'A jagged and menacing danger crafted from the remains of a powerful
+    ancient creature.
+
+'
+  ItemType: 0
+  IsConsumable: 0
+  IsStackable: 0
+  MaxStack: 1
+  Quantity: 0
+  Weapon: {fileID: 11400000, guid: 16c052e5ccf4d414891b04a75d3bb752, type: 2}
