@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamagable
@@ -33,6 +34,19 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         {
             PlayerDead();
         }
+    }
+
+    public bool TakeDamageAndResult(float amount)
+    {
+        if (playerStats.Health <= 0f) throw new Exception("wtf player");
+        playerStats.Health = Mathf.Max(playerStats.Health - amount, 0f);
+       // DamageManager.Instance.ShowDamageText(amount, transform);
+        if (playerStats.Health <= 0)
+        {
+            PlayerDead();
+            return false;
+        }
+        return true;
     }
 
     public void RestoreHealth(float amount)
