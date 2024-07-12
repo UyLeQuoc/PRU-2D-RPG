@@ -9,10 +9,11 @@ public class InventorySlot : MonoBehaviour
 
     [Header("Config")]
     [SerializeField] private Image itemIcon;
+
     [SerializeField] private Image quantityContainer;
     [SerializeField] private TextMeshProUGUI itemQuantityTMP;
 
-    public int Index { get; set; }
+    public int Index { get; set; } = 100;
 
     public void ClickSlot()
     {
@@ -31,5 +32,4 @@ public class InventorySlot : MonoBehaviour
         itemIcon.gameObject.SetActive(value);
         quantityContainer.gameObject.SetActive(value);
     }
-
 }

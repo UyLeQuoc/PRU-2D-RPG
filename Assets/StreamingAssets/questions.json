@@ -1,0 +1,104 @@
+{
+  "array": [
+    {
+      "questionText": "What does HTML stand for?",
+      "replies": [ "Hyperlinks and Text Markup Language", "Home Tool Markup Language", "Hyper Text Markup Language", "Hyper Transfer Markup Language" ],
+      "correctReplyIndex": 2
+    },
+    {
+      "questionText": "Which language is primarily used for styling web pages?",
+      "replies": [ "HTML", "CSS", "Python", "JavaScript" ],
+      "correctReplyIndex": 1
+    },
+    {
+      "questionText": "What is the output of 'print(2 + 2)' in Python?",
+      "replies": [ "22", "4", "2 + 2", "Error" ],
+      "correctReplyIndex": 1
+    },
+    {
+      "questionText": "Which keyword is used to declare a variable in JavaScript?",
+      "replies": [ "var", "let", "const", "All of the above" ],
+      "correctReplyIndex": 3
+    },
+    {
+      "questionText": "What does 'OOP' stand for in programming?",
+      "replies": [ "Out of Place", "Object Oriented Programming", "Open Source Project", "Output Oriented Program" ],
+      "correctReplyIndex": 1
+    },
+    {
+      "questionText": "Which operator is used for comparing two values in most programming languages?",
+      "replies": [ "=", "==", "<=", ">=" ],
+      "correctReplyIndex": 1
+    },
+    {
+      "questionText": "What is the purpose of a 'for loop'?",
+      "replies": [ "To jump to another part of the code", "To repeat a block of code multiple times", "To store data", "To define a function" ],
+      "correctReplyIndex": 1
+    },
+    {
+      "questionText": "What is the result of '10 / 3' in most programming languages?",
+      "replies": [ "3", "3.3333...", "3.3", "Error" ],
+      "correctReplyIndex": 0
+    },
+    {
+      "questionText": "Which data type is used to store text in programming?",
+      "replies": [ "Integer", "Float", "Boolean", "String" ],
+      "correctReplyIndex": 3
+    },
+    {
+      "questionText": "What is the meaning of 'API' in the context of programming?",
+      "replies": [ "Application Programming Interface", "Advanced Programming Instructions", "Artificial Programming Intelligence", "Automated Process Integration" ],
+      "correctReplyIndex": 0
+    },
+    {
+      "questionText": "What is the most basic unit of information in a computer?",
+      "replies": [ "Byte", "Bit", "Kilobyte", "Megabyte" ],
+      "correctReplyIndex": 1
+    },
+    {
+      "questionText": "Which type of error prevents a program from running?",
+      "replies": [ "Syntax error", "Logical error", "Runtime error", "All of the above" ],
+      "correctReplyIndex": 0
+    },
+    {
+      "questionText": "What is the purpose of a 'function' in programming?",
+      "replies": [ "To store data", "To display information", "To organize and reuse code", "To connect to the internet" ],
+      "correctReplyIndex": 2
+    },
+    {
+      "questionText": "What does 'IDE' stand for in programming?",
+      "replies": [ "Integrated Development Environment", "Internal Design Engine", "Interactive Debugging Environment", "Intelligent Data Extraction" ],
+      "correctReplyIndex": 0
+    },
+    {
+      "questionText": "Which of the following is NOT a programming language?",
+      "replies": [ "Java", "C++", "SQL", "Microsoft Word" ],
+      "correctReplyIndex": 3
+    },
+    {
+      "questionText": "What is the output of 'console.log(true && false)' in JavaScript?",
+      "replies": [ "true", "false", "undefined", "error" ],
+      "correctReplyIndex": 1
+    },
+    {
+      "questionText": "Which keyword is used to exit a loop prematurely?",
+      "replies": [ "continue", "break", "return", "exit" ],
+      "correctReplyIndex": 1
+    },
+    {
+      "questionText": "What is the purpose of version control systems like Git?",
+      "replies": [ "To track changes in code", "To deploy applications", "To compile code", "To debug code" ],
+      "correctReplyIndex": 0
+    },
+    {
+      "questionText": "What is the role of a compiler in programming?",
+      "replies": [ "To execute code", "To translate code into machine language", "To design algorithms", "To test code" ],
+      "correctReplyIndex": 1
+    },
+    {
+      "questionText": "What is the purpose of comments in code?",
+      "replies": [ "To make the code run faster", "To explain the code to other developers", "To change the output of the code", "To hide the code from users" ],
+      "correctReplyIndex": 1
+    }
+  ]
+}
