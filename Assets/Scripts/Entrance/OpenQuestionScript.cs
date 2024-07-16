@@ -8,6 +8,7 @@ public class OpenQuestionScript : MonoBehaviour
     public bool showDialog = false; // Biến cờ để kiểm soát hiển thị bảng thông báo
 
     [SerializeField] private Canvas questionCanvas; // Biến public để kéo thả Canvas từ Inspector
+    public bool isOtherPosition = false; // Biến cờ để kiểm soát hiển thị bảng thông báo
 
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D other)

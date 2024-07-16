@@ -22,6 +22,7 @@ public class QuestionManage : MonoBehaviour
     public TextMeshProUGUI scoreText;
 
     public TextMeshProUGUI finalScore;
+    public TextMeshProUGUI higestScore; // hiển thị điểm cao nhất hoặc thay đổi điểm cao
 
     public Button[] replyButtons; // nút đáp án, có 4 nút
     public GameObject reviseButton;// nút hồi sinh
@@ -64,7 +65,7 @@ public class QuestionManage : MonoBehaviour
         QuestionData questionData = JsonUtility.FromJson<QuestionData>(json);
 
         // Gán mảng câu hỏi vào Scriptable Object
-        qtsData.questions = questionData.array; //questionData.array.OrderBy(x => Random.value).Take(10).ToArray();
+        qtsData.questions = questionData.array.OrderBy(x => Random.value).Take(5).ToArray();
     }
 
     private void SetQuestion(int questionIndex)
@@ -113,7 +114,7 @@ public class QuestionManage : MonoBehaviour
             score++;
             totalExp += 50; // trả lời đúng + 50 exp
 
-            scoreText.text = $"Your score is: {score} ";
+            scoreText.text = $"Your score is: {score}/5 ";
 
             //Enable right panel
             Right.gameObject.SetActive(true);
@@ -171,13 +172,24 @@ public class QuestionManage : MonoBehaviour
 
             if (scorePercentage < 50)
             {
-                finalScore.text += ". Game over";
+                finalScore.text += ". Game over \n";
             }
             else
             {
-                finalScore.text += ". Good job bro \nCongrats";
+                finalScore.text += ". Good job \nCongrats";
             }
-            finalScore.text += "you have gained more: " + totalExp + " exps";
+            finalScore.text += " you have gained more: " + totalExp + " exps";
+
+            if (qtsData.highestScore == 0) // Lần chơi đầu tiên
+            {
+                qtsData.highestScore = score;
+                higestScore.text = $"Highest Score: {qtsData.highestScore}";
+            }
+            else if (score > qtsData.highestScore) // Các lần chơi sau
+            {
+                qtsData.highestScore = score;
+                higestScore.text = $"Wow the new highest Score: {qtsData.highestScore}";
+            }
         }
     }
 

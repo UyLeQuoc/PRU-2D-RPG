@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 589910df1cd12ac4b8d7315883bca911, type: 3}
   HasInteraction: 1
   InteractionType: 0
-  Greeting: Hi friends
+  Greeting: Welcome to programming class.
   Dialogue:
   - Hello im doing the exercise a little bit, you should do that too
   - Are you ready to study ?

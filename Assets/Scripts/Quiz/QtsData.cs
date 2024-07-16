@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "New QuestionData", menuName = "QuestionData")]
 public class QtsData : ScriptableObject
@@ -12,4 +12,5 @@ public class QtsData : ScriptableObject
     }
 
     public Question[] questions;
+    public int highestScore;
 }
