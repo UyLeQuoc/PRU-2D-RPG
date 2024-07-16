@@ -24,6 +24,14 @@ public class DoorScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            showDialog = false; // Tắt bảng thông báo khi người chơi đi ra
+        }
+    }
+
     private void OnGUI()
     {
         if (showDialog && !isInschool)
