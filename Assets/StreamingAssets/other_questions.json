@@ -1,0 +1,54 @@
+{
+  "array": [
+    {
+      "questionText": "Which country is known as the 'Land of the Rising Sun'?",
+      "replies": [ "China", "South Korea", "Japan", "Vietnam" ],
+      "correctReplyIndex": 2
+    },
+    {
+      "questionText": "What is the capital of Thailand?",
+      "replies": [ "Phnom Penh", "Hanoi", "Bangkok", "Kuala Lumpur" ],
+      "correctReplyIndex": 2
+    },
+    {
+      "questionText": "Which country is the largest in Asia by land area?",
+      "replies": [ "India", "China", "Russia", "Kazakhstan" ],
+      "correctReplyIndex": 2
+    },
+    {
+      "questionText": "What is the highest mountain in the world, located in Asia?",
+      "replies": [ "K2", "Kangchenjunga", "Lhotse", "Mount Everest" ],
+      "correctReplyIndex": 3
+    },
+    {
+      "questionText": "Which country is famous for the Great Wall?",
+      "replies": [ "Mongolia", "Japan", "China", "South Korea" ],
+      "correctReplyIndex": 2
+    },
+    {
+      "questionText": "How many provinces and cities are there in Vietnam?",
+      "replies": [ "63", "54", "72", "48" ],
+      "correctReplyIndex": 0
+    },
+    {
+      "questionText": "Which river is the longest in Asia?",
+      "replies": [ "Ganges", "Mekong", "Yangtze", "Yellow River" ],
+      "correctReplyIndex": 2
+    },
+    {
+      "questionText": "What is the capital of India?",
+      "replies": [ "Mumbai", "New Delhi", "Kolkata", "Chennai" ],
+      "correctReplyIndex": 1
+    },
+    {
+      "questionText": "Which country is known for the Taj Mahal?",
+      "replies": [ "Sri Lanka", "Nepal", "India", "Pakistan" ],
+      "correctReplyIndex": 2
+    },
+    {
+      "questionText": "What is the main religion in Thailand?",
+      "replies": [ "Islam", "Hinduism", "Buddhism", "Christianity" ],
+      "correctReplyIndex": 2
+    }
+  ]
+}

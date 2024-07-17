@@ -13,4 +13,6 @@ public class QtsData : ScriptableObject
 
     public Question[] questions;
     public int highestScore;
+    public int highestOtherScore;
+    public bool isOtherQuiz;
 }

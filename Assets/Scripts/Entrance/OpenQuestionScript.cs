@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,13 +9,23 @@ public class OpenQuestionScript : MonoBehaviour
     public bool showDialog = false; // Biến cờ để kiểm soát hiển thị bảng thông báo
 
     [SerializeField] private Canvas questionCanvas; // Biến public để kéo thả Canvas từ Inspector
-    public bool isOtherPosition = false; // Biến cờ để kiểm soát hiển thị bảng thông báo
+    public QtsData qtsData;
 
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player")) // Kiểm tra xem có phải người chơi va chạm không
         {
+            if (gameObject.CompareTag("OtherQuestion")) // Hoặc một tag khác bạn đã đặt
+            {
+                qtsData.isOtherQuiz = true;
+            }
+            else
+            {
+                qtsData.isOtherQuiz = false;
+            }
+            QuestionManage.Instance.LoadFromjson();
+
             showDialog = true; // Hiển thị bảng thông báo khi người chơi va chạm
         }
     }

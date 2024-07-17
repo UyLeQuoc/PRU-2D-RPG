@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -14,8 +15,11 @@ public class QuestionData
     public QtsData.Question[] array; // Đặt tên mảng là "array"
 }
 
-public class QuestionManage : MonoBehaviour
+public class QuestionManage : Singleton<QuestionManage>
 {
+    private const string QUESTIONS_FILE_PATH = "questions.json";
+    private const string OTHER_QUESTIONS_FILE_PATH = "other_questions.json";
+
     [SerializeField] private Canvas questionCanvas;
 
     public TextMeshProUGUI questionText;
@@ -49,23 +53,34 @@ public class QuestionManage : MonoBehaviour
         SetQuestion(currentQuestion);
     }
 
-    private void LoadFromjson()
+    public void LoadFromjson()
     {
-        string filePath = Path.Combine(Application.streamingAssetsPath, "questions.json");
+        StartCoroutine(LoadQuestionsAsync());
+    }
 
-        if (!File.Exists(filePath))
+    private IEnumerator LoadQuestionsAsync()
+    {
+        string filePath = qtsData.isOtherQuiz ? OTHER_QUESTIONS_FILE_PATH : QUESTIONS_FILE_PATH;
+        filePath = Path.Combine(Application.streamingAssetsPath, filePath);
+
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(filePath))
         {
-            Debug.LogError("Questions file not found at: " + filePath);
-            return; // Hoặc xử lý lỗi theo cách khác
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Error loading questions: " + webRequest.error);
+            }
+            else
+            {
+                string json = webRequest.downloadHandler.text;
+                QuestionData questionData = JsonUtility.FromJson<QuestionData>(json);
+                qtsData.questions = questionData.array.OrderBy(x => Random.value).Take(5).ToArray();
+
+                // Gọi SetQuestion sau khi tải xong
+                SetQuestion(currentQuestion);
+            }
         }
-        // Đọc nội dung file JSON
-        string json = File.ReadAllText(filePath);
-
-        // Chuyển đổi JSON thành mảng Question (giả sử bạn có lớp Question tương ứng)
-        QuestionData questionData = JsonUtility.FromJson<QuestionData>(json);
-
-        // Gán mảng câu hỏi vào Scriptable Object
-        qtsData.questions = questionData.array.OrderBy(x => Random.value).Take(5).ToArray();
     }
 
     private void SetQuestion(int questionIndex)
@@ -180,15 +195,31 @@ public class QuestionManage : MonoBehaviour
             }
             finalScore.text += " you have gained more: " + totalExp + " exps";
 
-            if (qtsData.highestScore == 0) // Lần chơi đầu tiên
+            if (qtsData.isOtherQuiz) // Nếu là quiz địa lý
             {
-                qtsData.highestScore = score;
-                higestScore.text = $"Highest Score: {qtsData.highestScore}";
+                if (qtsData.highestOtherScore == 0) // Lần chơi đầu tiên
+                {
+                    qtsData.highestScore = score;
+                    higestScore.text = $"Highest Score: {qtsData.highestScore}";
+                }
+                else if (score > qtsData.highestOtherScore)
+                {
+                    qtsData.highestOtherScore = score;
+                    higestScore.text = $"Highest Score: {qtsData.highestOtherScore}"; // Hiển thị điểm cao nhất cho quiz địa lý
+                }
             }
-            else if (score > qtsData.highestScore) // Các lần chơi sau
+            else // Nếu là quiz lập trình
             {
-                qtsData.highestScore = score;
-                higestScore.text = $"Wow the new highest Score: {qtsData.highestScore}";
+                if (qtsData.highestScore == 0) // Lần chơi đầu tiên
+                {
+                    qtsData.highestScore = score;
+                    higestScore.text = $"Highest Score: {qtsData.highestScore}";
+                }
+                else if (score > qtsData.highestScore) // Các lần chơi sau
+                {
+                    qtsData.highestScore = score;
+                    higestScore.text = $"Wow the new highest Score: {qtsData.highestScore}";
+                }
             }
         }
     }
